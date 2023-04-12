@@ -1,0 +1,8 @@
+1. We see again a printf from a user input format
+2. Right after the printf call, the program call the exit symbol
+3. This symbol is from GOT and else writable.
+4. So with a printf format attack, we can write the address we want to overwrite the absolute address mapped to the exit symbol.
+5. The is a function o() that call an system("/bin/sh")
+6. So the goal of this level is to overwrite the absolute address resolved by the GOT, by the o function address to redirect the program.
+7. Here it is a exploit command : (perl -e 'print "\x38\x98\x04\x08" . "\x3a\x98\x04\x08" . "%2044x" . "%5\$hn" . "%31904x" . "%4\$hn"'; cat) | ./level5
+
