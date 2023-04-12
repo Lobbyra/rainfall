@@ -1,0 +1,6 @@
+1. We discover a function n that display the flag of level7
+2. In the main, there is two malloc. The first one is where the first argument will be copied.
+3. The second malloc contains an address of a function that is called at the end of the main.
+4. The goal here is to write enough bytes in the first malloc to overlap and write the address of the n function
+5. Here is the command to achieve that : ./level6 $(perl -e 'print "1"x72 . "\x54\x84\x04\x08"')
+
