@@ -1,0 +1,10 @@
+1. We first explore the binary to discover a v function called from the main and a global variable m.
+2. We secondly saw the uses of printf with a dynamic format string read from stdin
+3. User input format string based is very dangerous because it can expose the stack to arbitrary read and write
+4. Right after the printf call the global variable is compared to 0x40 and if is equal execute /bin/sh. Else exit the program.
+5. So the challenge here is to write 0x40 in the global variable m.
+6. For that we need to get its address with gdb and the command i variables. (0x804988c)
+7. Now we have all informations to build our payload.
+8. We add the targeted address in the stack "x8c\x98\x04\x08"
+9. We also add the malicious printf part "%59x %4$n" that will count 59 chars to increment the internal printf counter and with the %n will write in our target address the value counted.
+10. This is our final exploit command : (perl -e 'print "\x8c\x98\x04\x08"."%x %x %46x %n"'; cat) | ./level3
