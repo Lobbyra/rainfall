@@ -1,0 +1,6 @@
+1. This level is a long program that listen in a infinite loop for the stdin
+2. If we enter "service", a space an another string, it is dup in the heap
+3. It has the same behavior with the "auth" string
+4. The "login" do something with the strings in memory and test if the 32th char of the auth string is \0
+5. If it's not, the program display "Password: " and back to the start of the loop
+6. But if it \0, it spawns a shell in level9
